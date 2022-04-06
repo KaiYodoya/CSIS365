@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MvpApp</string>
+    <string name="joke_of_the_day">Joke of the day!</string>
+</resources>
