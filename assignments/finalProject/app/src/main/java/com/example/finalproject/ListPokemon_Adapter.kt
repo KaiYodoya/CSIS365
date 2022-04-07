@@ -7,16 +7,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.Pokemon
 import com.example.finalproject.data.Resource
+import com.example.finalproject.data.Results
 
-class ListPokemon_Adapter(private val pokeList: List<Pokemon>) :
+class ListPokemon_Adapter(private val pokeList: List<Results?>) :
     RecyclerView.Adapter<ListPokemon_Adapter.MyViewHolder>(){
 
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val pokeName: TextView
+        val pokeURL: TextView
 
         init {
             pokeName = view.findViewById(R.id.name)
+            pokeURL = view.findViewById(R.id.url)
         }
     }
 
@@ -29,8 +32,12 @@ class ListPokemon_Adapter(private val pokeList: List<Pokemon>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        var item:Pokemon = pokeList[position]
-        holder.pokeName.text = item.results!!.name.toString()
+        var item:Results = pokeList[position]!!
+        holder.pokeName.text = item.name.toString()
+        holder.pokeURL.text = item.url.toString()
+
+        //holder.pokeName.text = item.results!!.name.toString()
+        //holder.pokeURL.text = item.results!!.url.toString()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
