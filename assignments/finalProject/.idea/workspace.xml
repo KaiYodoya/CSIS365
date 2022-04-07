@@ -12,22 +12,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="691cb768-657b-4502-a24d-f636c56bcf79" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/PokeService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon_Adapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon_Adapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/data/Pokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/data/Pokemon.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_list_pokemon_adapter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_list_pokemon_adapter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_pokemon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_pokemon.xml" afterDir="false" />
-    </list>
+    <list default="true" id="691cb768-657b-4502-a24d-f636c56bcf79" name="Default Changelist" comment="Retrofit + RecyclerView working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,6 +120,14 @@
       <option name="presentableId" value="Default" />
       <updated>1649272224370</updated>
     </task>
+    <task id="LOCAL-00001" summary="Retrofit + RecyclerView working">
+      <created>1649366248679</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649366248679</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,5 +141,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Retrofit + RecyclerView working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Retrofit + RecyclerView working" />
   </component>
 </project>
