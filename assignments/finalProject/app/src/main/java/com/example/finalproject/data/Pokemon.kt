@@ -8,8 +8,6 @@ data class Pokemon(
 )
 
 data class Results(
-
     val name: String?,
     val url: String?
-
 )

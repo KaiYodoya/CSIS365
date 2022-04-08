@@ -38,19 +38,20 @@ class ListPokemon : AppCompatActivity() {
             }
         })
 
-        /*
-        // Check if RecyclerView is working
-        val dataset = listOf(
-            Pokemon(Results("pokemon1", "str1")),
-            Pokemon(Results("pokemon2", "str2")),
-            Pokemon(Results("pokemon3", "str3")),
-            Pokemon(Results("pokemon4", "str4")),
-            Pokemon(Results("pokemon5", "str5"))
-        )
-
-        val adapter = ListPokemon_Adapter(dataset)
-        recyclerview.adapter = adapter
-         */
-
     }
 }
+
+
+/*
+// Check if RecyclerView is working
+val dataset = listOf(
+    Pokemon(Results("pokemon1", "str1")),
+    Pokemon(Results("pokemon2", "str2")),
+    Pokemon(Results("pokemon3", "str3")),
+    Pokemon(Results("pokemon4", "str4")),
+    Pokemon(Results("pokemon5", "str5"))
+)
+
+val adapter = ListPokemon_Adapter(dataset)
+recyclerview.adapter = adapter
+ */

@@ -36,11 +36,9 @@ class ListPokemon_Adapter(private val pokeList: List<Results?>) :
         holder.pokeName.text = item.name.toString()
         holder.pokeURL.text = item.url.toString()
 
-        //holder.pokeName.text = item.results!!.name.toString()
-        //holder.pokeURL.text = item.results!!.url.toString()
+
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount():Int{
         return pokeList.size
     }
