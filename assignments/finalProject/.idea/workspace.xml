@@ -13,8 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="691cb768-657b-4502-a24d-f636c56bcf79" name="Default Changelist" comment="Retrofit + RecyclerView working">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemonAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_list_pokemon_adapter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_list_pokemon_adapter.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,7 @@
 package com.example.finalproject
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +63,7 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
         // Call retrofit to get image to show on the list view
         val imageService = PokeService.create()
-        imageService.getPokemonImage(tmpUrl).enqueue(object : Callback<Resource> {
+        imageService.getSpeceficPokemon(tmpUrl).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
                 Log.i("getImage", "onResponse()")
 
@@ -80,7 +81,9 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
         // When any card is clicked
         holder.itemView.setOnClickListener{
-
+            val intent = Intent(context, DetailPokemon::class.java)
+            intent.putExtra("tmpUrl", tmpUrl)
+            context.startActivity(intent)
         }
 
 

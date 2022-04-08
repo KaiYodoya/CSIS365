@@ -13,7 +13,8 @@ interface PokeService {
     fun getAllPokemon(): Call<Pokemon>
 
     @GET("{url}")
-    fun getPokemonImage(@Path("url") url: String): Call<Resource>
+    fun getSpeceficPokemon(@Path("url") url: String): Call<Resource>
+
 
     companion object {
         var BASE_URL = "https://pokeapi.co/api/v2/"
