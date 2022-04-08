@@ -28,7 +28,7 @@ class ListPokemon : AppCompatActivity() {
 
                 // if retrofit success, "response" should have info of all pokemon
                 if (response.isSuccessful) {
-                    val adapter = ListPokemon_Adapter(response.body()!!.results)
+                    val adapter = ListPokemonAdapter(response.body()!!.results, this@ListPokemon)
                     recyclerview.adapter = adapter
                 }
             }
