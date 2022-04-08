@@ -18,8 +18,17 @@ import retrofit2.Response
 class ListPokemonAdapter(private val pokeList: List<Results?>, private val context:Context) :
     RecyclerView.Adapter<ListPokemonAdapter.MyViewHolder>(){
 
+    private lateinit var mListener: OnItemClickListener
 
-    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        mListener = listener
+    }
+
+    class MyViewHolder(view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
         val pokeName: TextView
         val pokeURL: TextView
         val pokeImage: ImageView
@@ -28,6 +37,10 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
             pokeName = view.findViewById(R.id.name)
             pokeURL = view.findViewById(R.id.url)
             pokeImage = view.findViewById(R.id.pokemonImage)
+
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
         }
     }
 
@@ -35,7 +48,7 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.layout_list_pokemon_adapter, viewGroup, false)
 
-        return MyViewHolder(view)
+        return MyViewHolder(view, mListener)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -44,8 +57,8 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
         holder.pokeName.text = item.name.toString()
         holder.pokeURL.text = item.url.toString()
 
+        // remove "https://pokeapi.co/api/v2/" from the full URL
         val tmpUrl = item.url.toString().replace("https://pokeapi.co/api/v2/", "")
-
 
         // Call retrofit to get image to show on the list view
         val imageService = PokeService.create()
@@ -57,14 +70,18 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
                 if (response.isSuccessful) {
                     Glide.with(context)
                         .load(response.body()!!.sprites?.front_default)
-                        .into(holder.pokeImage)
-                }
+                        .into(holder.pokeImage) }
             }
 
             override fun onFailure(call: Call<Resource>, t: Throwable) {
                 Log.e("getImage", "onFailure()")
             }
         })
+
+        // When any card is clicked
+        holder.itemView.setOnClickListener{
+
+        }
 
 
     }

@@ -3,6 +3,7 @@ package com.example.finalproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.Pokemon
@@ -30,6 +31,13 @@ class ListPokemon : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val adapter = ListPokemonAdapter(response.body()!!.results, this@ListPokemon)
                     recyclerview.adapter = adapter
+
+                    adapter.setOnItemClickListener(object: ListPokemonAdapter.OnItemClickListener{
+
+                        override fun onItemClick(position: Int){
+                            // Toast.makeText(this@ListPokemon, "You clicked on item no.$position", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
             }
 
