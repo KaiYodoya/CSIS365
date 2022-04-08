@@ -30,12 +30,12 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
     class MyViewHolder(view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
         val pokeName: TextView
-        val pokeURL: TextView
+        //val pokeURL: TextView
         val pokeImage: ImageView
 
         init {
             pokeName = view.findViewById(R.id.name)
-            pokeURL = view.findViewById(R.id.url)
+            //pokeURL = view.findViewById(R.id.url)
             pokeImage = view.findViewById(R.id.pokemonImage)
 
             itemView.setOnClickListener{
@@ -55,7 +55,7 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
         var item:Results = pokeList[position]!!
         holder.pokeName.text = item.name.toString()
-        holder.pokeURL.text = item.url.toString()
+        //holder.pokeURL.text = item.url.toString()
 
         // remove "https://pokeapi.co/api/v2/" from the full URL
         val tmpUrl = item.url.toString().replace("https://pokeapi.co/api/v2/", "")
