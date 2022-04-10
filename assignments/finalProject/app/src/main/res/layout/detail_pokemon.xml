@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".DetailPokemon">
+
 
     <TextView
         android:id="@+id/name"
@@ -16,13 +17,15 @@
         android:id="@+id/statHP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         />
 
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/radarChart"
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="411dp"
+        android:layout_height="396dp"
+        android:layout_gravity="center"
+        android:paddingTop="1000dp" />
 
 
 </LinearLayout>

@@ -69,17 +69,6 @@ class DetailPokemon : AppCompatActivity(){
 
 
     fun RadarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
-        // lateinit var radarChart: RadarChart
-        /*
-        lateinit var baseStatsArray: ArrayList<RadarEntry>
-        baseStatsArray.add(RadarEntry(hp.toFloat()))
-        baseStatsArray.add(RadarEntry(attack.toFloat()))
-        baseStatsArray.add(RadarEntry(defense.toFloat()))
-        baseStatsArray.add(RadarEntry(sAttack.toFloat()))
-        baseStatsArray.add(RadarEntry(sDefense.toFloat()))
-        baseStatsArray.add(RadarEntry(speed.toFloat()))
-
-         */
 
         val params = arrayOf(hp,attack,defense,sAttack,sDefense,speed)
         var baseStatsArray = mutableListOf<RadarEntry>()
@@ -90,23 +79,12 @@ class DetailPokemon : AppCompatActivity(){
         var baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
         baseStatsDataset.setDrawFilled(true)
         baseStatsDataset.setColor(Color.BLUE,100)
-        val DataSets: IRadarDataSet = baseStatsDataset
-        val data = RadarData(DataSets)
-        chart.data = data
-/*
-        var baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
-        baseStatsDataset.setDrawFilled(true)
-        baseStatsDataset.setColor(Color.BLUE,100)
-
-        baseStatsDataset.setColor(Color.BLUE,100)
-        val DataSets: IRadarDataSet = baseStatsDataset
-        val data = RadarData(DataSets)
-        chart.data = data
-        chart.description.isEnabled = false
+        val dataSets: IRadarDataSet = baseStatsDataset
+        val data = RadarData(dataSets)
 
 
         chart.xAxis.apply {
-            textSize = 18f
+            textSize = 12f
             yOffset = 0f
             xOffset = 0f
             valueFormatter = object : ValueFormatter(){
@@ -117,21 +95,23 @@ class DetailPokemon : AppCompatActivity(){
             }
         }
 
-        // inside of radarChart, axis's text size of (max/min/value of param), etc.
         chart.yAxis.apply{
-            textSize = 18f
-            setDrawLabels(false)
+            textSize = 5f
+            setDrawLabels(true)
+            setLabelCount(6, /*force: */true)
+            axisMinimum = 0.0f
+            axisMaximum = 150f
             granularity = 1f
-            axisMinimum = 0f
-            axisMaximum = 5f
-        }
-        chart.setTouchEnabled(false)
-        chart.legend.isEnabled = false // legends
-        chart.webColor = Color.BLACK  //chartの外枠の色
-        chart.webColorInner = Color.BLACK  //chartの内側の線の色
-        chart.webLineWidth = 1f
 
- */
+        }
+
+        chart.isRotationEnabled = false
+
+
+        // all change have to be implemented above
+        chart.data = data
+        chart.data.setValueTextSize(11f)
+        chart.invalidate()
     }
 
 }
