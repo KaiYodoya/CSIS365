@@ -1,13 +1,14 @@
 package com.example.finalproject
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.data.Resource
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.data.DataSet
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
@@ -24,11 +25,13 @@ class DetailPokemon : AppCompatActivity(){
     lateinit var statHP: TextView
     lateinit var chart: RadarChart
 
+    lateinit var backToList: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_pokemon)
 
-        var intent = intent
+        val intent = intent
         val tmpUrl = intent.getStringExtra("tmpUrl")
 
 
@@ -64,6 +67,15 @@ class DetailPokemon : AppCompatActivity(){
             }
         })
 
+        // button to go back to main list
+        backToList = findViewById(R.id.btnBackToList)
+        backToList.setOnClickListener {
+            Log.d("Detail", "Button has been pressed.")
+
+            val intentListFruit = Intent(this, ListPokemon::class.java)
+            startActivity(intentListFruit)
+        }
+
 
     }
 
@@ -71,12 +83,12 @@ class DetailPokemon : AppCompatActivity(){
     fun RadarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
 
         val params = arrayOf(hp,attack,defense,sAttack,sDefense,speed)
-        var baseStatsArray = mutableListOf<RadarEntry>()
+        val baseStatsArray = mutableListOf<RadarEntry>()
         for (param in params) baseStatsArray.add(RadarEntry(param))
 
         chart = findViewById(R.id.radarChart)
 
-        var baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
+        val baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
         baseStatsDataset.setDrawFilled(true)
         baseStatsDataset.setColor(Color.BLUE,100)
         val dataSets: IRadarDataSet = baseStatsDataset

@@ -27,5 +27,12 @@
         android:layout_gravity="center"
         android:paddingTop="1000dp" />
 
+    <Button
+        android:id="@+id/btnBackToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to List"
+        />
+
 
 </LinearLayout>
