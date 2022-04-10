@@ -1,10 +1,18 @@
 package com.example.finalproject
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.finalproject.data.Pokemon
 import com.example.finalproject.data.Resource
+import com.github.mikephil.charting.charts.RadarChart
+import com.github.mikephil.charting.components.AxisBase
+import com.github.mikephil.charting.data.DataSet
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,6 +21,8 @@ import retrofit2.Response
 class DetailPokemon : AppCompatActivity(){
 
     lateinit var name: TextView
+    lateinit var statHP: TextView
+    lateinit var chart: RadarChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +43,19 @@ class DetailPokemon : AppCompatActivity(){
                     name = findViewById(R.id.name)
                     name.text = response.body()!!.forms[0]!!.name.toString()
 
+                    statHP = findViewById(R.id.statHP)
+                    statHP.text = response.body()!!.stats[0]!!.base_stat.toString()
+
+                    val hp = response.body()!!.stats[0]!!.base_stat!!.toFloat()
+                    val attack = response.body()!!.stats[1]!!.base_stat!!.toFloat()
+                    val defence = response.body()!!.stats[2]!!.base_stat!!.toFloat()
+                    val sAttack = response.body()!!.stats[3]!!.base_stat!!.toFloat()
+                    val sDefense = response.body()!!.stats[4]!!.base_stat!!.toFloat()
+                    val speed = response.body()!!.stats[5]!!.base_stat!!.toFloat()
+
+                    //radarChart = findViewById(R.id.radarChart)
+                    RadarChart(hp, attack, defence, sAttack, sDefense, speed)
+
                 }
             }
 
@@ -43,4 +66,72 @@ class DetailPokemon : AppCompatActivity(){
 
 
     }
+
+
+    fun RadarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
+        // lateinit var radarChart: RadarChart
+        /*
+        lateinit var baseStatsArray: ArrayList<RadarEntry>
+        baseStatsArray.add(RadarEntry(hp.toFloat()))
+        baseStatsArray.add(RadarEntry(attack.toFloat()))
+        baseStatsArray.add(RadarEntry(defense.toFloat()))
+        baseStatsArray.add(RadarEntry(sAttack.toFloat()))
+        baseStatsArray.add(RadarEntry(sDefense.toFloat()))
+        baseStatsArray.add(RadarEntry(speed.toFloat()))
+
+         */
+
+        val params = arrayOf(hp,attack,defense,sAttack,sDefense,speed)
+        var baseStatsArray = mutableListOf<RadarEntry>()
+        for (param in params) baseStatsArray.add(RadarEntry(param))
+
+        chart = findViewById(R.id.radarChart)
+
+        var baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
+        baseStatsDataset.setDrawFilled(true)
+        baseStatsDataset.setColor(Color.BLUE,100)
+        val DataSets: IRadarDataSet = baseStatsDataset
+        val data = RadarData(DataSets)
+        chart.data = data
+/*
+        var baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
+        baseStatsDataset.setDrawFilled(true)
+        baseStatsDataset.setColor(Color.BLUE,100)
+
+        baseStatsDataset.setColor(Color.BLUE,100)
+        val DataSets: IRadarDataSet = baseStatsDataset
+        val data = RadarData(DataSets)
+        chart.data = data
+        chart.description.isEnabled = false
+
+
+        chart.xAxis.apply {
+            textSize = 18f
+            yOffset = 0f
+            xOffset = 0f
+            valueFormatter = object : ValueFormatter(){
+                private val paramLabel = arrayOf("HP","Attack","Defense","Special Attack","Special Defense", "Speed")
+                override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+                    return paramLabel[value.toInt() % paramLabel.size]
+                }
+            }
+        }
+
+        // inside of radarChart, axis's text size of (max/min/value of param), etc.
+        chart.yAxis.apply{
+            textSize = 18f
+            setDrawLabels(false)
+            granularity = 1f
+            axisMinimum = 0f
+            axisMaximum = 5f
+        }
+        chart.setTouchEnabled(false)
+        chart.legend.isEnabled = false // legends
+        chart.webColor = Color.BLACK  //chartの外枠の色
+        chart.webColorInner = Color.BLACK  //chartの内側の線の色
+        chart.webLineWidth = 1f
+
+ */
+    }
+
 }
