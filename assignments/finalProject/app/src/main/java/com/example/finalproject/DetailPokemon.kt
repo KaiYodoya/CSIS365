@@ -1,9 +1,7 @@
 package com.example.finalproject
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +39,7 @@ class DetailPokemon : AppCompatActivity(){
 
         // call retrofit
         val service = PokeService.create()
-        service.getSpeceficPokemon(tmpUrl!!).enqueue(object : Callback<Resource> {
+        service.getSpecificPokemon(tmpUrl!!).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
                 Log.i("getAllPokemon", "onResponse()")
 

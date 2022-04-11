@@ -1,8 +1,11 @@
 package com.example.finalproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,10 +15,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ListPokemon : AppCompatActivity() {
+    lateinit var pageIndex: EditText
+    lateinit var btnToRefresh: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_pokemon)
-
 
         supportActionBar!!.title = "Pokedex"
 
@@ -24,8 +29,20 @@ class ListPokemon : AppCompatActivity() {
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        // call retrofit
-        val service = PokeService.create()
+
+        // Get first 20 pokemon for the first call
+        retrofitCall(recyclerview)
+
+        // Query other pages with user input number
+        btnToRefresh = findViewById(R.id.btnToRefresh)
+        btnToRefresh.setOnClickListener {
+            Log.d("Detail", "Button has been pressed.")
+            retrofitCall(recyclerview)
+        }
+
+
+        /*
+        // Get All Pokemon
         service.getAllPokemon().enqueue(object : Callback<Pokemon> {
             override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
                 Log.i("getAllPokemon", "onResponse()")
@@ -49,20 +66,36 @@ class ListPokemon : AppCompatActivity() {
             }
         })
 
+         */
+    }
+
+    fun retrofitCall(recyclerview: RecyclerView) {
+        val service = PokeService.create()
+        pageIndex = findViewById(R.id.pageIndex)
+
+        var index = (pageIndex.text.toString().toInt() -1) * 20
+        service.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
+            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
+                Log.i("get20Pokemon", "onResponse()")
+
+                // if retrofit success, "response" should have info of all pokemon
+                if (response.isSuccessful) {
+                    val adapter = ListPokemonAdapter(response.body()!!.results, this@ListPokemon)
+                    recyclerview.adapter = adapter
+
+                    adapter.setOnItemClickListener(object: ListPokemonAdapter.OnItemClickListener{
+
+                        override fun onItemClick(position: Int){
+                            // Toast.makeText(this@ListPokemon, "You clicked on item no.$position", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                }
+            }
+            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                Log.e("getAllPokemon", "onFailure()")
+            }
+
+        })
     }
 }
 
-
-/*
-// Check if RecyclerView is working
-val dataset = listOf(
-    Pokemon(Results("pokemon1", "str1")),
-    Pokemon(Results("pokemon2", "str2")),
-    Pokemon(Results("pokemon3", "str3")),
-    Pokemon(Results("pokemon4", "str4")),
-    Pokemon(Results("pokemon5", "str5"))
-)
-
-val adapter = ListPokemon_Adapter(dataset)
-recyclerview.adapter = adapter
- */
