@@ -4,8 +4,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.finalproject.data.Resource
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
@@ -21,11 +23,13 @@ import retrofit2.Response
 
 class DetailPokemon : AppCompatActivity(){
 
+    lateinit var imageDefault: ImageView
+    lateinit var imageShiny: ImageView
     lateinit var name: TextView
     lateinit var statHP: TextView
     lateinit var chart: RadarChart
 
-    lateinit var backToList: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,21 +47,35 @@ class DetailPokemon : AppCompatActivity(){
 
                 // if retrofit success, "response" should have info of all pokemon
                 if (response.isSuccessful) {
+                    imageDefault = findViewById(R.id.pokemonImageDefault)
+                    Glide.with(this@DetailPokemon)
+                        .load(response.body()!!.sprites?.front_default)
+                        .into(imageDefault)
+
+                    imageShiny = findViewById(R.id.pokemonImageShiny)
+                    Glide.with(this@DetailPokemon)
+                        .load(response.body()!!.sprites?.front_shiny)
+                        .into(imageShiny)
+
                     name = findViewById(R.id.name)
                     name.text = response.body()!!.forms[0]!!.name.toString()
 
                     statHP = findViewById(R.id.statHP)
                     statHP.text = response.body()!!.stats[0]!!.base_stat.toString()
 
+                    // radar chart
                     val hp = response.body()!!.stats[0]!!.base_stat!!.toFloat()
                     val attack = response.body()!!.stats[1]!!.base_stat!!.toFloat()
                     val defence = response.body()!!.stats[2]!!.base_stat!!.toFloat()
                     val sAttack = response.body()!!.stats[3]!!.base_stat!!.toFloat()
                     val sDefense = response.body()!!.stats[4]!!.base_stat!!.toFloat()
                     val speed = response.body()!!.stats[5]!!.base_stat!!.toFloat()
-
-                    //radarChart = findViewById(R.id.radarChart)
                     RadarChart(hp, attack, defence, sAttack, sDefense, speed)
+
+                    // button to go back to main list on actionbar
+                    val actionBar = supportActionBar
+                    actionBar!!.title = response.body()!!.forms[0]!!.name.toString()
+                    actionBar.setDisplayHomeAsUpEnabled(true)
 
                 }
             }
@@ -66,15 +84,6 @@ class DetailPokemon : AppCompatActivity(){
                 Log.e("getAllPokemon", "onFailure()")
             }
         })
-
-        // button to go back to main list
-        backToList = findViewById(R.id.btnBackToList)
-        backToList.setOnClickListener {
-            Log.d("Detail", "Button has been pressed.")
-
-            val intentListFruit = Intent(this, ListPokemon::class.java)
-            startActivity(intentListFruit)
-        }
 
 
     }

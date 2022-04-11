@@ -17,6 +17,9 @@ class ListPokemon : AppCompatActivity() {
         setContentView(R.layout.list_pokemon)
 
 
+        supportActionBar!!.title = "Pokedex"
+
+
         // RecyclerView set up
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerview.layoutManager = LinearLayoutManager(this)

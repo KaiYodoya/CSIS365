@@ -13,7 +13,8 @@ data class Forms(
 
 // Where the front_default is saved
 data class Sprites(
-    val front_default: String?
+    val front_default: String?,
+    val front_shiny: String?
 )
 
 // Where the base stats are saved

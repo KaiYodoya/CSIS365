@@ -24,7 +24,8 @@
 
         <activity
             android:name=".DetailPokemon"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".ListPokemon">
         </activity>
     </application>
 
