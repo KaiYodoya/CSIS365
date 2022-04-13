@@ -73,7 +73,7 @@ class ListPokemon : AppCompatActivity() {
         val service = PokeService.create()
         pageIndex = findViewById(R.id.pageIndex)
 
-        var index = (pageIndex.text.toString().toInt() -1) * 20
+        val index = (pageIndex.text.toString().toInt() -1) * 20
         service.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
             override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
                 Log.i("get20Pokemon", "onResponse()")

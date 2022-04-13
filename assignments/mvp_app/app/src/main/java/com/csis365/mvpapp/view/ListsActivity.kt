@@ -2,6 +2,7 @@ package com.csis365.mvpapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.ListPreference
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -18,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class ListsActivity : AppCompatActivity(), ListsView {
 
-    val presenter = ListsPresenterFactory.createPresenter(this, this)
+    lateinit var presenter: ListsPresenter
 
     lateinit var container: View
     lateinit var ivJokeIcon: ImageView
@@ -32,6 +33,7 @@ class ListsActivity : AppCompatActivity(), ListsView {
 
         bindViews()
 
+        presenter = ListsPresenterFactory.createPresenter(this, this)
         presenter.start()
     }
 
