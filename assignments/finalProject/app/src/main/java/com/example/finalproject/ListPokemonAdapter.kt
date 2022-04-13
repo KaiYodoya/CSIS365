@@ -62,8 +62,9 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
         val tmpUrl = item.url.toString().replace("https://pokeapi.co/api/v2/", "")
 
         // Call retrofit to get image to show on the list view
-        val imageService = PokeService.create()
-        imageService.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
+        //val imageService = PokeApi.create()
+        val api = RetrofitApiFactory().getPokemonApi()
+        api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
                 Log.i("getImage", "onResponse()")
 

@@ -1,12 +1,10 @@
 package com.example.finalproject
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.Pokemon
@@ -31,13 +29,15 @@ class ListPokemon : AppCompatActivity() {
 
 
         // Get first 20 pokemon for the first call
-        retrofitCall(recyclerview)
+        //retrofitCall(recyclerview)
+        PokeService().getPokemon(recyclerview, this)
 
         // Query other pages with user input number
         btnToRefresh = findViewById(R.id.btnToRefresh)
         btnToRefresh.setOnClickListener {
             Log.d("Detail", "Button has been pressed.")
-            retrofitCall(recyclerview)
+            //retrofitCall(recyclerview)
+            PokeService().getPokemon(recyclerview, this)
         }
 
 
@@ -69,8 +69,9 @@ class ListPokemon : AppCompatActivity() {
          */
     }
 
+    /*
     fun retrofitCall(recyclerview: RecyclerView) {
-        val service = PokeService.create()
+        val service = PokeApi.create()
         pageIndex = findViewById(R.id.pageIndex)
 
         val index = (pageIndex.text.toString().toInt() -1) * 20
@@ -97,5 +98,9 @@ class ListPokemon : AppCompatActivity() {
 
         })
     }
+
+     */
+
+
 }
 

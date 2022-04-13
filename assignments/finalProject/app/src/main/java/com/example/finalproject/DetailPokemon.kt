@@ -38,8 +38,9 @@ class DetailPokemon : AppCompatActivity(){
 
 
         // call retrofit
-        val service = PokeService.create()
-        service.getSpecificPokemon(tmpUrl!!).enqueue(object : Callback<Resource> {
+        //val service = PokeApi.create()
+        val api = RetrofitApiFactory().getPokemonApi()
+        api.getSpecificPokemon(tmpUrl!!).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
                 Log.i("getAllPokemon", "onResponse()")
 

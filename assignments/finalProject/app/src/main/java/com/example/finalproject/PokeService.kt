@@ -1,34 +1,56 @@
+package com.example.finalproject
+
+import android.content.Context
+import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.Pokemon
-import com.example.finalproject.data.Resource
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.Callback
+import retrofit2.Response
 
+class PokeService {
+    val api = RetrofitApiFactory().getPokemonApi()
 
-interface PokeService {
+    fun getPokemon(
+        //successCallback: (Pokemon) -> Unit,
+        //failureCallback: (errorMessage: String) -> Unit
+        recyclerview: RecyclerView,
+        context: Context
+    ) {
+        val index = 1
+        api.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
 
-    @GET("pokemon?limit=100000&offset=0")
-    fun getAllPokemon(): Call<Pokemon>
+            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
+                if (response.isSuccessful) {
+                    val adapter = ListPokemonAdapter(response.body()!!.results, context)
+                    recyclerview.adapter = adapter
 
-    @GET("pokemon?&limit=20")
-    fun get20Pokemon(@Query("offset") index: Int): Call<Pokemon>
+                    adapter.setOnItemClickListener(object : ListPokemonAdapter.OnItemClickListener {
 
-    @GET("{url}")
-    fun getSpecificPokemon(@Path("url") url: String): Call<Resource>
+                        override fun onItemClick(position: Int) {
+                            // Toast.makeText(this@ListPokemon, "You clicked on item no.$position", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                }
+            }override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                    Log.e("getAllPokemon", "onFailure()")
+            }
+                    /*
+                    response.body()?.let {
+                        successCallback(it)
+                    } ?: run {
+                        failureCallback("No pokemon returned from service")
+                    }
+                } else {
+                    failureCallback("Error getting pokemon")
+                }
+            }
 
+            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                failureCallback("Error: ${t.message}")
+            }
 
-    companion object {
-        var BASE_URL = "https://pokeapi.co/api/v2/"
-        fun create(): PokeService {
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-            return retrofit.create(PokeService::class.java)
-        }
+                     */
+        })
     }
 }
-
