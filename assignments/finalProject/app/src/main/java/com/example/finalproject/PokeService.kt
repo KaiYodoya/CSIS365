@@ -15,9 +15,10 @@ class PokeService {
         //successCallback: (Pokemon) -> Unit,
         //failureCallback: (errorMessage: String) -> Unit
         recyclerview: RecyclerView,
+        pageIndex: Int,
         context: Context
     ) {
-        val index = 1
+        val index = (pageIndex-1) * 20
         api.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
 
             override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {

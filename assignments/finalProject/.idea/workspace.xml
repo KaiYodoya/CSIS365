@@ -13,50 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="691cb768-657b-4502-a24d-f636c56bcf79" name="Default Changelist" comment="Retrofit + RecyclerView working">
-      <change beforePath="$PROJECT_DIR$/../assignment_1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/ListPokemon.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/androidTest/java/com/csis365/mvpapp/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/androidTest/java/com/csis365/mvpapp/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/ListsApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/ListsApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Fruit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Fruit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Joke.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Joke.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Nutrition.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/dto/Nutrition.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/ChuckNorrisJokesApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/ChuckNorrisJokesApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/FruityViceApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/FruityViceApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/RetrofitApiFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/network/RetrofitApiFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/service/FruitService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/service/FruitService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/service/JokeService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/service/JokeService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/CategoriesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/CategoriesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/FruitListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/FruitListAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/JokeCategoryCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/JokeCategoryCallback.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsPresenterFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsPresenterFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/java/com/csis365/mvpapp/view/ListsView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/activity_lists.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/activity_lists.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/view_category.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/view_category.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/view_fruit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/layout/view_fruit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/test/java/com/csis365/mvpapp/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/test/java/com/csis365/mvpapp/ExampleUnitTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/app/src/test/java/com/csis365/mvpapp/view/ListsPresenterTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/app/src/test/java/com/csis365/mvpapp/view/ListsPresenterTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvp_app/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../mvp_app/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/PokeService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finalproject/PokeService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_pokemon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_pokemon.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,8 +62,8 @@
       <list>
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -120,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../mvp_app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RunManager">
