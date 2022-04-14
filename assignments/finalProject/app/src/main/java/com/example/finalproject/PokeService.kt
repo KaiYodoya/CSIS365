@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.Pokemon
+import com.example.finalproject.data.Resource
+import com.example.finalproject.data.Results
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,12 +14,30 @@ class PokeService {
     val api = RetrofitApiFactory().getPokemonApi()
 
     fun getPokemon(
-        //successCallback: (Pokemon) -> Unit,
-        //failureCallback: (errorMessage: String) -> Unit
-        recyclerview: RecyclerView,
+        successCallback: (List<Results?>) -> Unit,
+        failureCallback: (errorMessage: String) -> Unit,
         pageIndex: Int,
-        context: Context
     ) {
+        val index = (pageIndex-1) * 20
+        api.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
+            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        successCallback(it.results)
+                    } ?: run {
+                        failureCallback("No pokemon returned from service")
+                    }
+                } else {
+                    failureCallback("Error getting pokemon")
+                }
+            }
+
+            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                failureCallback("Error: ${t.message}")
+            }
+        })
+
+        /*
         val index = (pageIndex-1) * 20
         api.get20Pokemon(index).enqueue(object : Callback<Pokemon> {
 
@@ -36,22 +56,12 @@ class PokeService {
             }override fun onFailure(call: Call<Pokemon>, t: Throwable) {
                     Log.e("getAllPokemon", "onFailure()")
             }
-                    /*
-                    response.body()?.let {
-                        successCallback(it)
-                    } ?: run {
-                        failureCallback("No pokemon returned from service")
-                    }
-                } else {
-                    failureCallback("Error getting pokemon")
-                }
-            }
 
-            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                failureCallback("Error: ${t.message}")
-            }
+         */
 
-                     */
-        })
+
+
+
+        // })
     }
 }

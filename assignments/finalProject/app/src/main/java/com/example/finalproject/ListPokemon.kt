@@ -15,8 +15,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListPokemon : AppCompatActivity() {
-    //lateinit var presenter: ListsPresenter
+class ListPokemon : AppCompatActivity(), ListsView {
+    lateinit var presenter: ListsPresenter
 
     lateinit var container: View
     lateinit var pageIndex: EditText
@@ -30,11 +30,12 @@ class ListPokemon : AppCompatActivity() {
 
 
         bindViews()
-        //presenter = ListsPresenterFactory.createPresenter(this, this)
-        //presenter.start()
+        presenter = ListsPresenterFactory.createPresenter(this)
+        presenter.start()
 
-        bindPokemon()
 
+
+        /*
         // Get first 20 pokemon for the first call
         PokeService().getPokemon(recyclerview, pageIndex.text.toString().toInt(), this)
 
@@ -44,17 +45,35 @@ class ListPokemon : AppCompatActivity() {
             PokeService().getPokemon(recyclerview, pageIndex.text.toString().toInt(), this)
         }
 
+         */
+
     }
 
-    private fun showError(errorMessage: String) {
+    override fun showError(errorMessage: String) {
         Snackbar.make(container, errorMessage, Snackbar.LENGTH_LONG).show()
     }
 
-    private fun bindPokemon()
-    //private fun bindPokemon(pokeList: List<Results?>)
+    //private fun bindPokemon()
+    override fun bindPokemon(pokeList: List<Results?>)
     {
         recyclerview.layoutManager = LinearLayoutManager(this)
         //recyclerview.adapter = ListPokemonAdapter(pokeList, this)
+
+
+        val adapter = ListPokemonAdapter(pokeList, this)
+        recyclerview.adapter = adapter
+
+        adapter.setOnItemClickListener(object : ListPokemonAdapter.OnItemClickListener {
+
+            override fun onItemClick(position: Int) {
+                // Toast.makeText(this@ListPokemon, "You clicked on item no.$position", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    override fun findPageIndex():Int
+    {
+        return pageIndex.text.toString().toInt()
     }
 
     private fun bindViews()

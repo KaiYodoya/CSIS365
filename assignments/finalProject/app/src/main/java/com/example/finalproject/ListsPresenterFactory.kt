@@ -1,17 +1,15 @@
 package com.example.finalproject
 
 import android.content.Context
-/*
+
 class ListsPresenterFactory {
     companion object {
-        fun createPresenter(view: ListsView, context: Context): ListsPresenter {
+        fun createPresenter(view: ListsView): ListsPresenter {
             return ListsPresenter(
                 view,
-                FruitService(),
-                JokeService(),
+                PokeService()
+            )
                 // context.getSharedPreferences("key", Context.MODE_PRIVATE))
         }
     }
 }
-
- */

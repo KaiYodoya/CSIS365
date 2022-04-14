@@ -20,18 +20,4 @@ interface PokeApi {
     fun getSpecificPokemon(@Path("url") url: String): Call<Resource>
 }
 
-/*
-    companion object {
-        var BASE_URL = "https://pokeapi.co/api/v2/"
-        fun create(): PokeService {
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-            return retrofit.create(PokeService::class.java)
-        }
-    }
-}
-
- */
 

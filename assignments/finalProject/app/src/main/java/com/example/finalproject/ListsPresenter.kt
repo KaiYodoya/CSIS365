@@ -1,7 +1,7 @@
 package com.example.finalproject
 
 import androidx.recyclerview.widget.RecyclerView
-/*
+
 class ListsPresenter (
     val view: ListsView,
     val pokeservice: PokeService
@@ -11,19 +11,19 @@ class ListsPresenter (
         getPokemon()
     }
 
-    private fun getPokemon(recyclerview: RecyclerView) {
+    private fun getPokemon() {
         pokeservice.getPokemon(
-            successCallback = { joke ->
-                view.bindJoke(joke)
+            successCallback = { poke ->
+                view.bindPokemon(poke)
+                // recyclerview is created and bind within bindPokemon(List<Results?>)
             },
 
             failureCallback = { errorMessage ->
                 view.showError(errorMessage)
-            }
+            },
+            view.findPageIndex()
         )
     }
 
 
 }
-
- */
