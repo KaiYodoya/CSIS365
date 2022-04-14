@@ -27,25 +27,10 @@ class ListPokemon : AppCompatActivity(), ListsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_pokemon)
 
-
-
         bindViews()
+
         presenter = ListsPresenterFactory.createPresenter(this)
         presenter.start()
-
-
-
-        /*
-        // Get first 20 pokemon for the first call
-        PokeService().getPokemon(recyclerview, pageIndex.text.toString().toInt(), this)
-
-        // Query other pages with user input number
-        btnToRefresh.setOnClickListener {
-            Log.d("Detail", "Button has been pressed.")
-            PokeService().getPokemon(recyclerview, pageIndex.text.toString().toInt(), this)
-        }
-
-         */
 
     }
 
@@ -53,12 +38,9 @@ class ListPokemon : AppCompatActivity(), ListsView {
         Snackbar.make(container, errorMessage, Snackbar.LENGTH_LONG).show()
     }
 
-    //private fun bindPokemon()
     override fun bindPokemon(pokeList: List<Results?>)
     {
         recyclerview.layoutManager = LinearLayoutManager(this)
-        //recyclerview.adapter = ListPokemonAdapter(pokeList, this)
-
 
         val adapter = ListPokemonAdapter(pokeList, this)
         recyclerview.adapter = adapter
@@ -69,6 +51,11 @@ class ListPokemon : AppCompatActivity(), ListsView {
                 // Toast.makeText(this@ListPokemon, "You clicked on item no.$position", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun queryBtn(): Button
+    {
+        return btnToRefresh
     }
 
     override fun findPageIndex():Int
