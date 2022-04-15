@@ -1,4 +1,4 @@
-package com.example.finalproject
+package com.example.finalproject.view
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.finalproject.R
 import com.example.finalproject.data.Resource
+import com.example.finalproject.network.RetrofitApiFactory
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.RadarData
@@ -38,7 +40,7 @@ class DetailPokemon : AppCompatActivity(){
 
 
         // call retrofit
-        //val service = PokeApi.create()
+        //val service = com.example.finalproject.network.PokeApi.create()
         val api = RetrofitApiFactory().getPokemonApi()
         api.getSpecificPokemon(tmpUrl!!).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {

@@ -1,4 +1,6 @@
-package com.example.finalproject
+package com.example.finalproject.view
+
+import com.example.finalproject.service.PokeService
 
 class ListsPresenter (
     private val view: ListsView,

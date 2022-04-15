@@ -1,3 +1,5 @@
+package com.example.finalproject.network
+
 import com.example.finalproject.data.Pokemon
 import com.example.finalproject.data.Resource
 import retrofit2.Call

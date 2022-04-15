@@ -1,6 +1,6 @@
-package com.example.finalproject
+package com.example.finalproject.view
 
-import android.content.Context
+import com.example.finalproject.service.PokeService
 
 class ListsPresenterFactory {
     companion object {
@@ -8,8 +8,8 @@ class ListsPresenterFactory {
             return ListsPresenter(
                 view,
                 PokeService()
-            )
                 // context.getSharedPreferences("key", Context.MODE_PRIVATE))
+            )
         }
     }
 }

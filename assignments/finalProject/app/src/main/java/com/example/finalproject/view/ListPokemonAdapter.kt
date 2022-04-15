@@ -1,4 +1,4 @@
-package com.example.finalproject
+package com.example.finalproject.view
 
 import android.content.Context
 import android.content.Intent
@@ -10,8 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.finalproject.R
 import com.example.finalproject.data.Resource
 import com.example.finalproject.data.Results
+import com.example.finalproject.network.RetrofitApiFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,15 +32,10 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
     }
 
     class MyViewHolder(view: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(view) {
-        val pokeName: TextView
-        //val pokeURL: TextView
-        val pokeImage: ImageView
+        val pokeName: TextView = view.findViewById(R.id.name)
+        val pokeImage: ImageView = view.findViewById(R.id.pokemonImage)
 
         init {
-            pokeName = view.findViewById(R.id.name)
-            //pokeURL = view.findViewById(R.id.url)
-            pokeImage = view.findViewById(R.id.pokemonImage)
-
             itemView.setOnClickListener{
                 listener.onItemClick(adapterPosition)
             }
@@ -54,15 +51,13 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        var item:Results = pokeList[position]!!
+        val item:Results = pokeList[position]!!
         holder.pokeName.text = item.name.toString()
-        //holder.pokeURL.text = item.url.toString()
 
         // remove "https://pokeapi.co/api/v2/" from the full URL
         val tmpUrl = item.url.toString().replace("https://pokeapi.co/api/v2/", "")
 
         // Call retrofit to get image to show on the list view
-        //val imageService = PokeApi.create()
         val api = RetrofitApiFactory().getPokemonApi()
         api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
             override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
@@ -86,7 +81,6 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
             intent.putExtra("tmpUrl", tmpUrl)
             context.startActivity(intent)
         }
-
 
     }
 

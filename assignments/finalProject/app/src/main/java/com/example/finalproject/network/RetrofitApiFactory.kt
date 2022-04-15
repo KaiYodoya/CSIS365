@@ -1,6 +1,5 @@
-package com.example.finalproject
+package com.example.finalproject.network
 
-import PokeApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

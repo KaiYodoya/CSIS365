@@ -56,5 +56,8 @@ dependencies {
     // MPAndroidChart for radar chart 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    // Unit testing
+    testImplementation "io.mockk:mockk:1.12.3"
+    testImplementation "com.google.truth:truth:1.1.3"
 
 }
