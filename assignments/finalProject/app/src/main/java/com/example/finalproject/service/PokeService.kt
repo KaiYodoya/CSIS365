@@ -13,7 +13,7 @@ class PokeService {
     fun getPokemon(
         successCallback: (List<Results?>) -> Unit,
         failureCallback: (errorMessage: String) -> Unit,
-        pageIndex: Int,
+        pageIndex: Int
     ) {
         val index = (pageIndex-1) * 20
         api.get20Pokemon(index).enqueue(object : Callback<Pokemon> {

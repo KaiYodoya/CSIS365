@@ -56,6 +56,11 @@ class ListPokemon : AppCompatActivity(), ListsView {
 
     override fun findPageIndex():Int
     {
+        var isPageIndex = pageIndex.text.toString().toIntOrNull()
+        if (isPageIndex == null)
+        {
+            pageIndex.setText("1")
+        }
         return pageIndex.text.toString().toInt()
     }
 
