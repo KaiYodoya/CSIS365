@@ -201,7 +201,20 @@ class DetailPokemon : AppCompatActivity(), DetailView{
             }
         }
 
-        // radar chart
+        createRadarChart(resource)
+        createActionbar(resource)
+    }
+
+    private fun createActionbar(resource: Resource)
+    {
+        // button to go back to main list on actionbar
+        val actionBar = supportActionBar
+        actionBar!!.title = resource.forms[0]!!.name.toString()
+        actionBar.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun createRadarChart(resource: Resource)
+    {
         val hp = resource.stats[0]!!.base_stat!!.toFloat()
         val attack = resource.stats[1]!!.base_stat!!.toFloat()
         val defence = resource.stats[2]!!.base_stat!!.toFloat()
@@ -209,12 +222,6 @@ class DetailPokemon : AppCompatActivity(), DetailView{
         val sDefense = resource.stats[4]!!.base_stat!!.toFloat()
         val speed = resource.stats[5]!!.base_stat!!.toFloat()
         radarChart(hp, attack, defence, sAttack, sDefense, speed)
-
-        // button to go back to main list on actionbar
-        val actionBar = supportActionBar
-        actionBar!!.title = resource.forms[0]!!.name.toString()
-        actionBar.setDisplayHomeAsUpEnabled(true)
-
     }
 
 
