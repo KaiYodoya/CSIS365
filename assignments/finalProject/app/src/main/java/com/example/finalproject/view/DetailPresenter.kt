@@ -1,7 +1,6 @@
 package com.example.finalproject.view
 
 import com.example.finalproject.service.PokeDetailService
-import com.example.finalproject.service.PokeService
 
 class DetailPresenter(
     private val view: DetailView,

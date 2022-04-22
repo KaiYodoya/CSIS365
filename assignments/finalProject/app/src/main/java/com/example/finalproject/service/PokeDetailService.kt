@@ -1,8 +1,6 @@
 package com.example.finalproject.service
 
-import com.example.finalproject.data.Pokemon
 import com.example.finalproject.data.Resource
-import com.example.finalproject.data.Results
 import com.example.finalproject.network.RetrofitApiFactory
 import retrofit2.Call
 import retrofit2.Callback
