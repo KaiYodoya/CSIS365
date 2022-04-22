@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.finalproject.R
 import com.example.finalproject.data.Resource
+import com.example.finalproject.data.Results
 import com.example.finalproject.network.RetrofitApiFactory
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
@@ -27,6 +28,7 @@ class DetailPokemon : AppCompatActivity(){
     lateinit var imageDefault: ImageView
     lateinit var imageShiny: ImageView
     lateinit var ability: TextView
+    lateinit var ability2: TextView
     lateinit var hiddenAbility: TextView
     lateinit var chart: RadarChart
 
@@ -61,12 +63,30 @@ class DetailPokemon : AppCompatActivity(){
                         .load(response.body()!!.sprites?.front_shiny)
                         .into(imageShiny)
 
+                    // The number of the length of abilities list
                     var listLen =0
                     for (i in response.body()!!.abilities) {
                         listLen += 1
                     }
-                    ability.text = response.body()!!.abilities[0]!!.ability!!.name.toString()
-                    hiddenAbility.text = response.body()!!.abilities[1]!!.ability!!.name.toString()
+
+                    // The number of abilities the pokemon have
+                    when (listLen) {
+                        1 -> {
+                            ability.text = response.body()!!.abilities[0]!!.ability!!.name.toString()
+                        }
+                        2 -> {
+                            ability.text = response.body()!!.abilities[0]!!.ability!!.name.toString()
+                            hiddenAbility.text = response.body()!!.abilities[1]!!.ability!!.name.toString()
+                        }
+                        3 -> {
+                            ability.text = response.body()!!.abilities[0]!!.ability!!.name.toString()
+                            ability2.text = response.body()!!.abilities[1]!!.ability!!.name.toString()
+                            hiddenAbility.text = response.body()!!.abilities[2]!!.ability!!.name.toString()
+                        }
+                        else -> { // Note the block
+                            print("Error: Pokemon should have at least one ability")
+                        }
+                    }
 
                     // radar chart
                     val hp = response.body()!!.stats[0]!!.base_stat!!.toFloat()
@@ -75,7 +95,7 @@ class DetailPokemon : AppCompatActivity(){
                     val sAttack = response.body()!!.stats[3]!!.base_stat!!.toFloat()
                     val sDefense = response.body()!!.stats[4]!!.base_stat!!.toFloat()
                     val speed = response.body()!!.stats[5]!!.base_stat!!.toFloat()
-                    RadarChart(hp, attack, defence, sAttack, sDefense, speed)
+                    radarChart(hp, attack, defence, sAttack, sDefense, speed)
 
                     // button to go back to main list on actionbar
                     val actionBar = supportActionBar
@@ -94,7 +114,7 @@ class DetailPokemon : AppCompatActivity(){
     }
 
 
-    fun RadarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
+    fun radarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
 
         val params = arrayOf(hp,attack,defense,sAttack,sDefense,speed)
         val baseStatsArray = mutableListOf<RadarEntry>()
@@ -139,12 +159,18 @@ class DetailPokemon : AppCompatActivity(){
         chart.data.setValueTextSize(11f)
         chart.invalidate()
     }
+/*
+    override fun bindDetail(pokeList: List<Results?>)
+    {
 
+    }
+*/
     private fun bindViews()
     {
         imageDefault = findViewById(R.id.pokemonImageDefault)
         imageShiny = findViewById(R.id.pokemonImageShiny)
         ability = findViewById(R.id.ability)
+        ability2 = findViewById(R.id.ability2)
         hiddenAbility = findViewById(R.id.hiddenAbility)
         chart = findViewById(R.id.radarChart)
     }
