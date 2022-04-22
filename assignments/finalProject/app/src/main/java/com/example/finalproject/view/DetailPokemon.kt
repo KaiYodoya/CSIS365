@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 import android.graphics.Color
+import android.graphics.PointF.length
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -25,8 +26,8 @@ class DetailPokemon : AppCompatActivity(){
 
     lateinit var imageDefault: ImageView
     lateinit var imageShiny: ImageView
-    lateinit var name: TextView
-    lateinit var statHP: TextView
+    lateinit var ability: TextView
+    lateinit var hiddenAbility: TextView
     lateinit var chart: RadarChart
 
 
@@ -38,6 +39,8 @@ class DetailPokemon : AppCompatActivity(){
         val intent = intent
         val tmpUrl = intent.getStringExtra("tmpUrl")
 
+        bindViews()
+
 
         // call retrofit
         //val service = com.example.finalproject.network.PokeApi.create()
@@ -48,21 +51,22 @@ class DetailPokemon : AppCompatActivity(){
 
                 // if retrofit success, "response" should have info of all pokemon
                 if (response.isSuccessful) {
-                    imageDefault = findViewById(R.id.pokemonImageDefault)
+
                     Glide.with(this@DetailPokemon)
                         .load(response.body()!!.sprites?.front_default)
                         .into(imageDefault)
 
-                    imageShiny = findViewById(R.id.pokemonImageShiny)
+
                     Glide.with(this@DetailPokemon)
                         .load(response.body()!!.sprites?.front_shiny)
                         .into(imageShiny)
 
-                    name = findViewById(R.id.name)
-                    name.text = response.body()!!.forms[0]!!.name.toString()
-
-                    statHP = findViewById(R.id.statHP)
-                    statHP.text = response.body()!!.stats[0]!!.base_stat.toString()
+                    var listLen =0
+                    for (i in response.body()!!.abilities) {
+                        listLen += 1
+                    }
+                    ability.text = response.body()!!.abilities[0]!!.ability!!.name.toString()
+                    hiddenAbility.text = response.body()!!.abilities[1]!!.ability!!.name.toString()
 
                     // radar chart
                     val hp = response.body()!!.stats[0]!!.base_stat!!.toFloat()
@@ -96,7 +100,7 @@ class DetailPokemon : AppCompatActivity(){
         val baseStatsArray = mutableListOf<RadarEntry>()
         for (param in params) baseStatsArray.add(RadarEntry(param))
 
-        chart = findViewById(R.id.radarChart)
+
 
         val baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
         baseStatsDataset.setDrawFilled(true)
@@ -134,6 +138,15 @@ class DetailPokemon : AppCompatActivity(){
         chart.data = data
         chart.data.setValueTextSize(11f)
         chart.invalidate()
+    }
+
+    private fun bindViews()
+    {
+        imageDefault = findViewById(R.id.pokemonImageDefault)
+        imageShiny = findViewById(R.id.pokemonImageShiny)
+        ability = findViewById(R.id.ability)
+        hiddenAbility = findViewById(R.id.hiddenAbility)
+        chart = findViewById(R.id.radarChart)
     }
 
 }
