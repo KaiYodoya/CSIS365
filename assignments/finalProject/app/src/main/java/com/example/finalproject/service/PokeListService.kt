@@ -7,7 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PokeService {
+class PokeListService {
     private val api = RetrofitApiFactory().getPokemonApi()
 
     fun getPokemon(

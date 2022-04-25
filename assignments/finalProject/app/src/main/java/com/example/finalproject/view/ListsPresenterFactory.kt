@@ -1,13 +1,13 @@
 package com.example.finalproject.view
 
-import com.example.finalproject.service.PokeService
+import com.example.finalproject.service.PokeListService
 
 class ListsPresenterFactory {
     companion object {
         fun createPresenter(view: ListsView): ListsPresenter {
             return ListsPresenter(
                 view,
-                PokeService()
+                PokeListService()
                 // context.getSharedPreferences("key", Context.MODE_PRIVATE))
             )
         }

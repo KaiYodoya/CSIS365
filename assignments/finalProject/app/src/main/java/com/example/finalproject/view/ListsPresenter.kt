@@ -1,10 +1,10 @@
 package com.example.finalproject.view
 
-import com.example.finalproject.service.PokeService
+import com.example.finalproject.service.PokeListService
 
 class ListsPresenter (
     private val view: ListsView,
-    private val pokeservice: PokeService
+    private val pokeListService: PokeListService
 )   {
 
     fun start() {
@@ -13,7 +13,7 @@ class ListsPresenter (
 
 
     private fun getPokemon() {
-        pokeservice.getPokemon(
+        pokeListService.getPokemon(
             successCallback = { poke ->
                 view.bindPokemon(poke)
                 // recyclerview is created and bind within bindPokemon(List<Results?>)

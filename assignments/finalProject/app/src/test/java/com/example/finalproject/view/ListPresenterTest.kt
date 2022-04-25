@@ -1,6 +1,6 @@
 package com.example.finalproject.view
 import com.example.finalproject.data.Results
-import com.example.finalproject.service.PokeService
+import com.example.finalproject.service.PokeListService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -9,7 +9,7 @@ import org.junit.Test
 class ListPresenterTest {
 
     private val view: ListsView = mockk(relaxed = true)
-    private val pokeService: PokeService = mockk(relaxed = true)
+    private val pokeService: PokeListService = mockk(relaxed = true)
 
     private val presenter = ListsPresenter(view, pokeService)
 
