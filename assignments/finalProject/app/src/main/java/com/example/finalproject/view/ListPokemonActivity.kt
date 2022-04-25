@@ -11,7 +11,7 @@ import com.example.finalproject.R
 import com.example.finalproject.data.Results
 import com.google.android.material.snackbar.Snackbar
 
-class ListPokemon : AppCompatActivity(), ListsView {
+class ListPokemonActivity : AppCompatActivity(), ListsView {
     lateinit var presenter: ListsPresenter
 
     lateinit var container: View

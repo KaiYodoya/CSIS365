@@ -21,7 +21,7 @@ class ListPresenterTest {
     }
 
     @Test
-    fun `When get pokemon, given response is success, then bind fruits on view`() {
+    fun `When get pokemon, given response is success, then bind pokemon on view`() {
         // Arrange
         val pokemon = buildPokemon()
 

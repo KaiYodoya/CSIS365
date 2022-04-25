@@ -77,7 +77,7 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
         // When any card is clicked
         holder.itemView.setOnClickListener{
-            val intent = Intent(context, DetailPokemon::class.java)
+            val intent = Intent(context, DetailPokemonActivity::class.java)
             intent.putExtra("tmpUrl", tmpUrl)
             context.startActivity(intent)
         }

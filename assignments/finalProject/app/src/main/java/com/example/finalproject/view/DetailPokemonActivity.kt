@@ -18,7 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import com.google.android.material.snackbar.Snackbar
 
 
-class DetailPokemon : AppCompatActivity(), DetailView{
+class DetailPokemonActivity : AppCompatActivity(), DetailView{
 
     lateinit var presenter: DetailPresenter
 
@@ -45,12 +45,17 @@ class DetailPokemon : AppCompatActivity(), DetailView{
     }
 
 
-    fun radarChart(hp:Float, attack: Float, defense: Float, sAttack: Float, sDefense: Float, speed: Float) {
+    private fun radarChart(hp:Float,
+                           attack: Float,
+                           defense: Float,
+                           sAttack: Float,
+                           sDefense: Float,
+                           speed: Float
+    ) {
 
         val params = arrayOf(hp,attack,defense,sAttack,sDefense,speed)
         val baseStatsArray = mutableListOf<RadarEntry>()
         for (param in params) baseStatsArray.add(RadarEntry(param))
-
 
 
         val baseStatsDataset= RadarDataSet(baseStatsArray, "Base Stats")
@@ -83,6 +88,7 @@ class DetailPokemon : AppCompatActivity(), DetailView{
         }
 
         chart.isRotationEnabled = false
+        chart.description.isEnabled = false;
 
 
         // all change have to be implemented above
