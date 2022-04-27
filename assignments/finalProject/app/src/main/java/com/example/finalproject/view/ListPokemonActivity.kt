@@ -1,5 +1,7 @@
 package com.example.finalproject.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,6 +21,8 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
     lateinit var btnToRefresh: Button
     lateinit var recyclerview: RecyclerView
 
+    lateinit var sp: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_pokemon)
@@ -28,6 +32,13 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
         presenter = ListsPresenterFactory.createPresenter(this)
         presenter.start()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val editor = sp.edit()
+        editor.putInt("PageIndexNum", pageIndex.text.toString().toInt())
+        editor.apply()
     }
 
     override fun showError(errorMessage: String) {
@@ -56,7 +67,7 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
 
     override fun findPageIndex():Int
     {
-        var isPageIndex = pageIndex.text.toString().toIntOrNull()
+        val isPageIndex = pageIndex.text.toString().toIntOrNull()
         if (isPageIndex == null)
         {
             pageIndex.setText("1")
@@ -69,8 +80,12 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
         supportActionBar!!.title = "Pokedex"
         container = findViewById(R.id.container)
         recyclerview = findViewById(R.id.recyclerView)
-        pageIndex = findViewById(R.id.pageIndex)
         btnToRefresh = findViewById(R.id.btnToRefresh)
+
+        pageIndex = findViewById(R.id.pageIndex)
+        sp = getSharedPreferences("PageIndexNum", Context.MODE_PRIVATE)
+        val pageIndexNum: Int = sp.getInt("PageIndexNum", 1)
+        pageIndex.setText(pageIndexNum.toString())
     }
 
 }
