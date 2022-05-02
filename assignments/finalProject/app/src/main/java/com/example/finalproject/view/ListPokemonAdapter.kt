@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.finalproject.R
-import com.example.finalproject.data.Resource
+import com.example.finalproject.data.PokemonDetail
 import com.example.finalproject.data.Results
 import com.example.finalproject.network.RetrofitApiFactory
 import retrofit2.Call
@@ -61,8 +61,8 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
 
         // Call retrofit to get image to show on the list view
         val api = RetrofitApiFactory().getPokemonApi()
-        api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
-            override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
+        api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<PokemonDetail> {
+            override fun onResponse(call: Call<PokemonDetail>, response: Response<PokemonDetail>) {
                 Log.i("getImage", "onResponse()")
 
                 // if retrofit success, "response" should have info of all pokemon
@@ -72,7 +72,7 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
                         .into(holder.pokeImage) }
             }
 
-            override fun onFailure(call: Call<Resource>, t: Throwable) {
+            override fun onFailure(call: Call<PokemonDetail>, t: Throwable) {
                 Log.e("getImage", "onFailure()")
             }
         })

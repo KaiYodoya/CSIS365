@@ -1,6 +1,6 @@
 package com.example.finalproject.service
 
-import com.example.finalproject.data.Resource
+import com.example.finalproject.data.PokemonDetail
 import com.example.finalproject.network.RetrofitApiFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -10,12 +10,12 @@ class PokeDetailService {
     private val api = RetrofitApiFactory().getPokemonApi()
 
     fun getDetail(
-        successCallback: (Resource) -> Unit,
+        successCallback: (PokemonDetail) -> Unit,
         failureCallback: (errorMessage: String) -> Unit,
         tmpUrl: String
     ){
-        api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
-            override fun onResponse(call: Call<Resource>, response: Response<Resource>) {
+        api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<PokemonDetail> {
+            override fun onResponse(call: Call<PokemonDetail>, response: Response<PokemonDetail>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         successCallback(it)
@@ -27,7 +27,7 @@ class PokeDetailService {
                 }
             }
 
-            override fun onFailure(call: Call<Resource>, t: Throwable) {
+            override fun onFailure(call: Call<PokemonDetail>, t: Throwable) {
                 failureCallback("Error: ${t.message}")
             }
         })

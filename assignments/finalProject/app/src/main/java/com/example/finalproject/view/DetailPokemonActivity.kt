@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.finalproject.R
-import com.example.finalproject.data.Resource
+import com.example.finalproject.data.PokemonDetail
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.RadarData
@@ -101,62 +101,62 @@ class DetailPokemonActivity : AppCompatActivity(), DetailView{
         Snackbar.make(container, errorMessage, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun bindDetail(resource: Resource)
+    override fun bindDetail(pokemonDetail: PokemonDetail)
     {
         Glide.with(this)
-            .load(resource.sprites?.front_default)
+            .load(pokemonDetail.sprites?.front_default)
             .into(imageDefault)
 
         Glide.with(this)
-            .load(resource.sprites?.front_shiny)
+            .load(pokemonDetail.sprites?.front_shiny)
             .into(imageShiny)
 
 
         // The number of the length of abilities list
         var listLen =0
-        for (i in resource.abilities) {
+        for (i in pokemonDetail.abilities) {
             listLen += 1
         }
 
         // The number of abilities the pokemon have
         when (listLen) {
             1 -> {
-                ability.text = resource.abilities[0]!!.ability!!.name.toString()
+                ability.text = pokemonDetail.abilities[0]!!.ability!!.name.toString()
             }
             2 -> {
-                ability.text = resource.abilities[0]!!.ability!!.name.toString()
-                hiddenAbility.text = resource.abilities[1]!!.ability!!.name.toString()
+                ability.text = pokemonDetail.abilities[0]!!.ability!!.name.toString()
+                hiddenAbility.text = pokemonDetail.abilities[1]!!.ability!!.name.toString()
             }
             3 -> {
-                ability.text = resource.abilities[0]!!.ability!!.name.toString()
-                ability2.text = resource.abilities[1]!!.ability!!.name.toString()
-                hiddenAbility.text = resource.abilities[2]!!.ability!!.name.toString()
+                ability.text = pokemonDetail.abilities[0]!!.ability!!.name.toString()
+                ability2.text = pokemonDetail.abilities[1]!!.ability!!.name.toString()
+                hiddenAbility.text = pokemonDetail.abilities[2]!!.ability!!.name.toString()
             }
             else -> { // Note the block
                 print("Error: Pokemon should have at least one ability")
             }
         }
 
-        createRadarChart(resource)
-        createActionbar(resource)
+        createRadarChart(pokemonDetail)
+        createActionbar(pokemonDetail)
     }
 
-    private fun createActionbar(resource: Resource)
+    private fun createActionbar(pokemonDetail: PokemonDetail)
     {
         // button to go back to main list on actionbar
         val actionBar = supportActionBar
-        actionBar!!.title = resource.forms[0]!!.name.toString()
+        actionBar!!.title = pokemonDetail.forms[0]!!.name.toString()
         actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun createRadarChart(resource: Resource)
+    private fun createRadarChart(pokemonDetail: PokemonDetail)
     {
-        val hp = resource.stats[0]!!.base_stat!!.toFloat()
-        val attack = resource.stats[1]!!.base_stat!!.toFloat()
-        val defence = resource.stats[2]!!.base_stat!!.toFloat()
-        val sAttack = resource.stats[3]!!.base_stat!!.toFloat()
-        val sDefense = resource.stats[4]!!.base_stat!!.toFloat()
-        val speed = resource.stats[5]!!.base_stat!!.toFloat()
+        val hp = pokemonDetail.stats[0]!!.base_stat!!.toFloat()
+        val attack = pokemonDetail.stats[1]!!.base_stat!!.toFloat()
+        val defence = pokemonDetail.stats[2]!!.base_stat!!.toFloat()
+        val sAttack = pokemonDetail.stats[3]!!.base_stat!!.toFloat()
+        val sDefense = pokemonDetail.stats[4]!!.base_stat!!.toFloat()
+        val speed = pokemonDetail.stats[5]!!.base_stat!!.toFloat()
         radarChart(hp, attack, defence, sAttack, sDefense, speed)
     }
 

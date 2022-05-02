@@ -1,6 +1,6 @@
 package com.example.finalproject.data
 
-data class Resource(
+data class PokemonDetail(
     val abilities: List<Abilities?>,
     val forms: List<Forms?>,
     val sprites: Sprites?,

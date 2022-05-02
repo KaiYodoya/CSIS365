@@ -1,8 +1,8 @@
 package com.example.finalproject.view
 
-import com.example.finalproject.data.Resource
+import com.example.finalproject.data.PokemonDetail
 
 interface DetailView {
-    fun bindDetail(pokeResponse: Resource)
+    fun bindDetail(pokeResponse: PokemonDetail)
     fun showError(errorMessage: String)
 }
