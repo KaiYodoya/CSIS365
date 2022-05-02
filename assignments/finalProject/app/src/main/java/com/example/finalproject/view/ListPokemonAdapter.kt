@@ -57,6 +57,8 @@ class ListPokemonAdapter(private val pokeList: List<Results?>, private val conte
         // remove "https://pokeapi.co/api/v2/" from the full URL
         val tmpUrl = item.url.toString().replace("https://pokeapi.co/api/v2/", "")
 
+        // holder.pokeImage.setImageDrawable(null)
+
         // Call retrofit to get image to show on the list view
         val api = RetrofitApiFactory().getPokemonApi()
         api.getSpecificPokemon(tmpUrl).enqueue(object : Callback<Resource> {
