@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import com.google.android.material.snackbar.Snackbar
+import com.r0adkll.slidr.Slidr
 
 
 class DetailPokemonActivity : AppCompatActivity(), DetailView{
@@ -34,7 +35,7 @@ class DetailPokemonActivity : AppCompatActivity(), DetailView{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.detail_pokemon)
+        setContentView(R.layout.layout_detail_pokemon)
 
         val intent = intent
         val tmpUrl = intent.getStringExtra("tmpUrl")
@@ -147,6 +148,9 @@ class DetailPokemonActivity : AppCompatActivity(), DetailView{
         val actionBar = supportActionBar
         actionBar!!.title = pokemonDetail.forms[0]!!.name.toString()
         actionBar.setDisplayHomeAsUpEnabled(true)
+
+        // SwipeBack
+        Slidr.attach(this)
     }
 
     private fun createRadarChart(pokemonDetail: PokemonDetail)

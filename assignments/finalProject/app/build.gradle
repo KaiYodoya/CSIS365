@@ -60,4 +60,7 @@ dependencies {
     testImplementation "io.mockk:mockk:1.12.3"
     testImplementation "com.google.truth:truth:1.1.3"
 
+    // swipe back
+    implementation 'com.r0adkll:slidableactivity:2.1.0'
+
 }
