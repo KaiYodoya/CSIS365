@@ -150,7 +150,7 @@ class DetailPokemonActivity : AppCompatActivity(), DetailView{
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         // SwipeBack
-        Slidr.attach(this)
+        //Slidr.attach(this)
     }
 
     private fun createRadarChart(pokemonDetail: PokemonDetail)

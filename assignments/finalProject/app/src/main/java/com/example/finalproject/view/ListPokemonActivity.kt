@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -24,6 +25,7 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
     lateinit var sp: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("asdf", "${pageIndex.text}")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_pokemon)
 
@@ -35,6 +37,7 @@ class ListPokemonActivity : AppCompatActivity(), ListsView {
     }
 
     override fun onDestroy() {
+        Log.d("asdf", "${pageIndex.text}")
         super.onDestroy()
         val editor = sp.edit()
         editor.putInt("PageIndexNum", pageIndex.text.toString().toInt())

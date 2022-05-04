@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.R
 
 class SplashScreenActivity: AppCompatActivity() {
+
     private lateinit var icon : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
